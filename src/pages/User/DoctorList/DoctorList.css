@@ -1,0 +1,325 @@
+body {
+  background: linear-gradient(135deg, #f0f4ff, #e0f7fa);
+  font-family: Arial, sans-serif;
+}
+
+/* Doctor List Container */
+.doctor-list-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 30px;
+  align-items: flex-start; /* Ensures filters align at the top */
+}
+
+/* Doctor List */
+.doctor-list {
+  background-color: #dee6ef;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.doctor-list h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Search Bar */
+.verification-badge-list{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.verification-badge-list img{
+  width: 50px;
+  margin-left: 20%;
+}
+.verification-doctor-list img{
+  width: 90px; 
+}
+
+
+.verification-badge-list span{
+  color: #000;
+}
+
+.search-section{
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-bar {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.search-input {
+  width: 70%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+}
+
+/* Doctor Cards */
+.doctor-cards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  margin-top: 5px;
+}
+
+.doctor-card:hover {
+  transform: scale(1.02);
+}
+
+/* Doctor Card Header */
+.doctor-header {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.doctor-info-list {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.doctor-info-list p{
+  color: #000000;
+  font-size: medium;
+}
+.doctor-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #e3e3e3;
+  margin-right: 15px;
+}
+
+.doctor-basic-info {
+  text-align: left;
+}
+
+.doctor-basic-info h3 {
+  font-size: 1.5em;
+  margin: 5px 0;
+  color: #333;
+}
+
+.doctor-basic-info p {
+  font-size: 0.9em;
+  color: #000000;
+  margin: 3px 0;
+}
+
+.expand-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin-left: 10px;
+}
+
+.expand-button:hover {
+  color: #0056b3;
+}
+
+/* Doctor Details */
+.section-doctor-details{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.doctor-details {
+  width: 95%;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+.doctor-details-in{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.doctor-details p {
+  font-size: 0.9em;
+  text-decoration: solid;
+  color: #242424;
+  margin: 5px 0;
+}
+
+/* Doctor Actions */
+.doctor-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.appointment-btn,
+.add-doctor-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.appointment-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.appointment-btn:hover {
+  background-color: #218838;
+}
+
+.add-doctor-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.add-doctor-btn:hover {
+  background-color: #0069d9;
+}
+
+.doctor-card .badge {
+  background-color: #ff4081;
+  color: white;
+  font-size: 0.75em;
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* Filter Section */
+.filter-icon{
+  display: flex;
+  flex-direction: row;
+}
+
+.filter-icon .icon {
+  margin-right: 5px;
+  fill: rgb(0, 0, 0); /* Changes the SVG color */
+  stroke: white;
+  width: 24px; /* Adjust size */
+  height: 24px;
+}
+
+.filter-section {
+  background-color: #002366;
+  color: white;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid #ddd; /* Border for box effect */
+  text-align: left;
+  position: sticky; /* Sticks to the top when scrolling */
+  margin-left: 20px ;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: space-around;
+  
+}
+
+/* Filter Section Header */
+.filter-section h3 {
+  margin-left: 50px;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  justify-content: flex-start;
+  
+  
+}
+
+/* Filter Groups - Inside Box */
+.filter-group {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  justify-content: center;
+}
+
+.filter-group label {
+  font-size: 0.95em;
+  color: white;
+  font-weight: bold;
+}
+
+.filter-group select {
+  width: 100%;
+  height: 10%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.filter-group select:hover {
+  border-color: #007bff;
+}
+
+/* Doctor List Styling */
+.doctor-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.doctor-list h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}

@@ -1,0 +1,237 @@
+/* General Container */
+.home-container {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+}
+
+
+/* Hero Section */
+.hero-section {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+  position: relative;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-content span {
+  color: #ff5252;
+}
+
+.home-search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 2px solid #ddd;
+  height: 45px;
+}
+
+.select .home-location-select {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border: none;
+  background-color: #f0f4f8;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+  flex: 1;
+  width: 30%;
+  margin: 0px;
+  height: 100%;
+
+}
+
+.home-location-select i {
+  margin-right: 8px;
+  color: #007BFF;
+}
+
+.input .home-search-input {
+  border: none;
+  padding: 12px 15px;
+  flex: 3;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.home-search-input::placeholder {
+  color: #888;
+}
+
+.home-search-button {
+  background-color: #dc2809;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.home-search-button:hover {
+  background-color: #f60606;
+}
+
+/* For Icons (Optional) */
+.hero-content i {
+  font-size: 1.1rem;
+  margin-right: 5px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .hero-content .search-section {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .hero-content .home-location-select,
+  .hero-content .home-search-input,
+  .hero-content .home-search-button {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .hero-content .home-search-button {
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+/* Info Section */
+.info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.info-section:hover {
+  background-color: #e3f2fd;
+}
+
+.info-text {
+  max-width: 500px;
+}
+
+.info-text h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.info-text span {
+  color: #ff5252;
+}
+
+.book-now-btn {
+  background-color: #ff5252;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #e53935;
+}
+
+.info-image img {
+  max-width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+  background-color: #212121;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+  color: #b0bec5;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .info-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-image {
+    margin-top: 20px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .button p {
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,88 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.signup-form, .otp-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-button, .otp-button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signup-button:hover, .otp-button:hover {
+  background-color: #45a049;
+}
+
+.field-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+.success-message {
+  color: green;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+.error-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.otp-form {
+  margin-top: 1rem;
+}
+
+.otp-form input {
+  margin-bottom: 0.5rem;
+}
+.otp-timer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.resend-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.resend-link:hover {
+  color: #0056b3;
+}

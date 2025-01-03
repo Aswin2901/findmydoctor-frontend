@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Spread items across the navbar */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #e1e4e7; /* Background similar to the image */
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 50px; /* Adjust the size as necessary */
+    margin-right: 10px;
+}
+
+.navbar-logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.navbar-logo .highlight {
+    color: #ff3b3f; /* Red color for "MY" */
+}
+
+/* Align navbar links to the right */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto; /* Push the links to the right side */
+}
+
+.navbar-links li {
+    margin: 0 15px;
+}
+
+/* Button styles instead of anchor links */
+.navbar-links button {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+.navbar-links button:hover {
+    color: #ff3b3f; /* Highlight color */
+}
+
+/* Ensure the profile icon is visible */
+.navbar-user-icon {
+    font-size: 24px;
+    margin-left: 20px; /* Add some space between links and icon */
+}
+
+.navbar-user-icon button {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Increase icon size */
+.navbar-user-icon i {
+    font-size: 28px;
+}
+
+/* Button hover effect for profile icon */
+.navbar-user-icon button:hover {
+    color: #ff3b3f; /* Highlight color */
+}
+
+.notification-button i {
+    font-size: 28px; /* Increase this value to make the icon larger */
+    color: #000; /* Optional: Adjust the color if needed */
+}
+
+.notification-button i:hover {
+    color: #ff3b3f; /* Optional: Add hover effect for better interactivity */
+}
+
+.notification-button {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item.unread {
+    background-color: #f9f9f9;
+}
+
+.notification-item.read {
+    background-color: #fff;
+}
+
+.mark-read-btn {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.mark-read-btn:hover {
+    color: green;
+}
+
+.no-notifications {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}
+
+.view-all {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
+}
+
+.view-all button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.view-all button:hover {
+    color: green;
+}
+
+.custom-alert-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.alert-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert-read-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.alert-read-btn:hover {
+    background-color: #0056b3;
+}
+
+.alert-close-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.alert-close-btn:hover {
+    background-color: #c62828;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,114 @@
+/* Container for the whole signup page */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f1f8fb;
+  min-height: 100vh;
+}
+
+.signup-form {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup-form h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.signup-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.signup-form input, .signup-form select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.signup-form input:focus, .signup-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.signup-form .signup-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e74c3c; /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form .signup-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.signup-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signup-links a {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #e74c3c;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-links a:hover {
+  color: #c0392b; /* Darker red on hover */
+}
+
+/* Error message styling */
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.field-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Success message styling */
+.success-message {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .signup-form {
+    padding: 20px;
+    width: 90%;
+  }
+}

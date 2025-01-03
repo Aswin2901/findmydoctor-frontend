@@ -1,0 +1,128 @@
+.notifications-container {
+    width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+.notifications-list {
+    list-style: none;
+    padding: 0;
+}
+
+.notification-item {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.notification-item.unread {
+    border-left: 4px solid #007bff;
+}
+
+.notification-item.read {
+    opacity: 0.6;
+}
+
+.notification-item h4 {
+    margin: 0 0 5px;
+    color: #007bff;
+}
+
+.notification-item p {
+    margin: 0 0 10px;
+    color: #555;
+}
+
+.notification-item small {
+    display: block;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.mark-read-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.mark-read-button:hover {
+    background: #0056b3;
+}
+
+.notification-alert {
+    background: #ffeb3b;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.notification-alert h4 {
+    margin-bottom: 10px;
+}
+
+.alert-buttons button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.alert-buttons button:first-child {
+    background: #f44336;
+    color: white;
+}
+
+.alert-buttons button:last-child {
+    background: #4caf50;
+    color: white;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    background: white;
+    color: #007bff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.page-button.active {
+    background: #007bff;
+    color: white;
+}
+
+.page-button:hover {
+    background: #0056b3;
+    color: white;
+}

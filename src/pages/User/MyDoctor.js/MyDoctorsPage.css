@@ -1,0 +1,73 @@
+.my-doctors-page {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.doctor-table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-table th,
+.doctor-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.doctor-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.doctor-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.doctor-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.doctor-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.remove-button, .add-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    margin-top: 20px;
+}
+
+.remove-button:hover, .add-button:hover {
+    opacity: 0.8;
+}
+
+.doctor-name {
+    font-weight: bold;
+}
+
+.doctor-specialty, .doctor-hospital {
+    color: #666;
+}

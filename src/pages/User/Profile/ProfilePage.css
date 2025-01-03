@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+.profile-page {
+    display: flex;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #0077b6;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #ccc;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #ffffff;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar-menu li {
+    padding: 15px;
+    font-size: 16px;
+    color: #e0e0e0;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu li:hover, .sidebar-menu .active {
+    background-color: #ffffff;
+    color: #0077b6;
+}
+
+.user-profile-details {
+    width: 80%;
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    color: #333;
+}
+
+.user-edit-button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.user-edit-button:hover {
+    background-color: #005f8d;
+}
+
+.info-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.info-field label {
+    font-weight: bold;
+    color: #666;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.info-field input,
+.info-field span {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-size: 15px;
+}
+
+.info-field input:focus {
+    outline: none;
+    border-color: #0077b6;
+}
+
+textarea {
+    resize: none;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.radio-group label {
+    margin-right: 20px;
+    font-weight: normal;
+    color: #333;
+}

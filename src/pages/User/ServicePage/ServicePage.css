@@ -1,0 +1,88 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .service-page {
+    text-align: center;
+    color: #333;
+    background-color: #f8f9fa;
+  }
+  
+  .service-header {
+    background-color: #d9e8f5;
+    padding: 20px 0;
+  }
+  
+  .service-header h1 {
+    font-size: 36px;
+    color: #222;
+  }
+  
+  .service-header .highlight {
+    color: #d32f2f;
+  }
+  
+  .service-content {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .service-left,
+  .service-right {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .service-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  .service-right {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .service-right p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .service-right .highlight {
+    color: #d32f2f;
+    font-weight: bold;
+  }
+  
+  .service-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .service-footer p {
+    font-size: 18px;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 5px;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  

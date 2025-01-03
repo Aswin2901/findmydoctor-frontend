@@ -1,0 +1,45 @@
+/* NotificationPage.css */
+.notification-page {
+    padding: 20px;
+    max-width: 800px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  .notification-list {
+    width: 95%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .notification-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .notification-card.read {
+    background-color: #e0e0e0;
+  }
+  
+  .notification-card p {
+    margin: 5px 0;
+  }
+  
+  .mark-as-read-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .mark-as-read-btn:hover {
+    background-color: #0056b3;
+  }
+  
