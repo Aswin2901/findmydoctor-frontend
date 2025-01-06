@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './Home.css';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
@@ -10,6 +9,7 @@ import doctorpatient from '../../../Images/service doctor -1.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import SubNavbar from '../../../components/SubNavBar/SubNavbar';
+import api from '../../../services/api'
 
 const Home = () => {
   const auth = useAuth();
@@ -27,7 +27,7 @@ const Home = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/doctors/getdoctors/');
+        const response = await api.get('doctors/getdoctors/');
         setDoctors(response.data);
 
         // Extract unique locations
@@ -69,7 +69,7 @@ const Home = () => {
 
   const findNearestDoctors = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/doctors/nearest/', {
+      const response = await api.get('doctors/nearest/', {
         params: {
           latitude: userLocation.latitude,
           longitude: userLocation.longitude,

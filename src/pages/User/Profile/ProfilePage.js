@@ -15,6 +15,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import L from 'leaflet';
+import api from '../../../services/api';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -97,7 +98,7 @@ const ProfilePage = () => {
 
         const getProfile = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/accounts/get_profile/${userId}`);
+                const response = await api.get(`accounts/get_profile/${userId}`);
                 setUserData({
                     name: response.data.full_name,
                     gender: response.data.gender,
@@ -141,8 +142,8 @@ const ProfilePage = () => {
             }
     
             // Send data to the backend, including location, latitude, and longitude
-            const response = await axios.patch(
-                `http://localhost:8000/accounts/update_user_profile/${userId}/`,
+            const response = await api.patch(
+                `accounts/update_user_profile/${userId}/`,
                 {
                     full_name: userData.name,
                     phone: userData.mobile,

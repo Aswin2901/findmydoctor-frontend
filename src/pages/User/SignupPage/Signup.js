@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import './Signup.css';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
+import api from '../../../services/api';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ const Signup = () => {
       setErrorMessages('');
       setFieldErrors({});  // Clear previous field errors
 
-      const response = await axios.post('http://localhost:8000/accounts/register/', formData);
+      const response = await api.post('accounts/register/', formData);
       console.log('OTP sent', response.data);
       setOtpSent(true);
       setResendAvailable(false);
@@ -82,7 +82,7 @@ const Signup = () => {
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/accounts/verify-otp/', { ...formData, otp });
+      const response = await api.post('accounts/verify-otp/', { ...formData, otp });
       console.log('User registered successfully', response.data);
       setErrorMessages('');
       navigate('/', { state: { message: 'Signup successful! Please log in.' } });
@@ -94,7 +94,7 @@ const Signup = () => {
 
   const handleResendOtp = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/accounts/register/', formData);
+      const response = await api.post('accounts/register/', formData);
       console.log('New OTP sent', response.data);
       setErrorMessages('A new OTP has been sent to your email.');
       setTimer(30);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './ChatPage.css';
 import ChatArea from '../../../components/Chat/ChatArea/ChatArea';
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api'
 
 function ChatPage() {
     const [doctors, setDoctors] = useState([]);
@@ -15,8 +15,8 @@ function ChatPage() {
     useEffect(() => {
         const fetchDoctors = async () => {
             try {
-                const response = await axios.get(
-                    `http://localhost:8000/appointments/patients/${userId}/doctors/`
+                const response = await api.get(
+                    `appointments/patients/${userId}/doctors/`
                 );
                 setDoctors(response.data);
             } catch (error) {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AppointmentModal from '../Appointment/AppointmentModal';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
@@ -11,6 +10,7 @@ import './DoctorList.css';
 import { useAuth } from '../../../contexts/AuthContext';
 import { containerClasses } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import api from '../../../services/api'
 
 const DoctorList = () => {
   const auth = useAuth();
@@ -61,7 +61,7 @@ const DoctorList = () => {
 
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/doctors/getdoctors/');
+        const response = await api.get('doctors/getdoctors/');
         setDoctors(response.data);
         setFilteredDoctors(response.data);
         const uniqueQualifications = new Set(response.data.map(doctor => doctor.qualification)); 
@@ -138,7 +138,7 @@ const DoctorList = () => {
           setUserLocation({ latitude, longitude });
 
           try {
-            const response = await axios.get('http://localhost:8000/doctors/nearest/', {
+            const response = await api.get('doctors/nearest/', {
               params: { latitude, longitude },
             });
             console.log(response.data , 'response')
@@ -161,8 +161,8 @@ const DoctorList = () => {
 
   const addToMyDoctors = async (doctorId) => {
     try {
-      const response = await axios.post(
-        'http://localhost:8000/accounts/add-to-my-doctors/',
+      const response = await api.post(
+        'accounts/add-to-my-doctors/',
         { doctor_id: doctorId, userId: userId }
       );
       setSuccessMessage(response.data.message);

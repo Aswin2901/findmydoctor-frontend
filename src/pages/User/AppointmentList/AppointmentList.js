@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./AppointmentList.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import Footer from "../../../components/Footer/Footer";
 import Navbar from "../../../components/Navbar/Navbar";
+import api from '../../../services/api'
 
 const AppointmentList = () => {
     const [allAppointments, setAllAppointments] = useState([]);
@@ -20,8 +20,8 @@ const AppointmentList = () => {
     // Fetch appointments from the backend
     useEffect(() => {
         setLoading(true);
-        axios
-            .get(`http://127.0.0.1:8000/appointments/get_appointments/${userId}/`)
+        api
+            .get(`appointments/get_appointments/${userId}/`)
             .then((response) => {
                 setAllAppointments(response.data.appointments);
                 setLoading(false);
@@ -64,8 +64,8 @@ const AppointmentList = () => {
     }, [filteredAppointments, currentPage, pageSize]);
 
     const cancelAppointment = (id) => {
-        axios
-            .post(`http://127.0.0.1:8000/appointments/${id}/user_cancel/${userId}`)
+        api
+            .post(`appointments/${id}/user_cancel/${userId}`)
             .then(() => {
                 alert("Appointment canceled successfully!");
                 setAllAppointments((prev) => prev.filter((app) => app.id !== id));

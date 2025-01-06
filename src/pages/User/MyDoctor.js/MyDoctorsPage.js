@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './MyDoctorsPage.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import defaultProfilePic from '../../../Images/profile-icon.png'
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api';
 
 const MyDoctorsPage = () => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const MyDoctorsPage = () => {
     useEffect(() => {
         const fetchFavoriteDoctors = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/accounts/${userId}/favorites`);
+                const response = await api.get(`accounts/${userId}/favorites`);
                 setFavoriteDoctors(response.data);
             } catch (error) {
                 console.error("Error fetching favorite doctors:", error);
@@ -32,7 +32,7 @@ const MyDoctorsPage = () => {
         console.log('doctor id ::::', FavId);
         if (window.confirm("Are you sure you want to remove this doctor from your favorites?")) {
             try {
-                const response = await axios.delete(`http://localhost:8000/accounts/remove_fav/${FavId}/`);
+                const response = await api.delete(`accounts/remove_fav/${FavId}/`);
                 console.log('response:', response.data);
     
                 if(response.data.data){

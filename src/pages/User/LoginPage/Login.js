@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../../components/Navbar/Navbar.js';
 import Footer from '../../../components/Footer/Footer.js';
 import { useDispatch } from 'react-redux';
 import './Login.css';
 import { useAuth } from '../../../contexts/AuthContext.js';
+import api from '../../../services/api.js'
 
 const Login = () => {
   const { login } = useAuth()
@@ -26,7 +26,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/token/', formData);
+      const response = await api.post('token/', formData);
       login(response.data);
       setSuccessMessage('Login successful! Redirecting...');
       setTimeout(() => {
@@ -43,8 +43,8 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/accounts/oauth/login/'); // Adjusted endpoint to fetch Google login URL
-      window.location.href = response.data.auth_url; // Redirect to the Google login page
+      const response = await api.get('accounts/oauth/login/'); 
+      window.location.href = response.data.auth_url; 
     } catch (error) {
       console.error('Google login failed', error);
     }

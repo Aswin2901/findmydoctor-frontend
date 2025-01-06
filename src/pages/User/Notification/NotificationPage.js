@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './NotificationPage.css';
 import Navbar from '../../../components/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api';
 
 const NotificationPage = () => {
   const auth = useAuth()
@@ -15,7 +15,7 @@ const NotificationPage = () => {
     const fetchNotifications = async () => {
       try {
         if (userId){
-          const response = await axios.get(`http://localhost:8000/accounts/get-notification/${userId}/`);
+          const response = await api.get(`accounts/get-notification/${userId}/`);
           setNotifications(response.data);
         }
         
@@ -28,7 +28,7 @@ const NotificationPage = () => {
 
   const markAsRead = async (notificationId) => {
     try {
-      await axios.patch(`http://localhost:8000/notifications/mark-as-read/${notificationId}/`);
+      await api.patch(`notifications/mark-as-read/${notificationId}/`);
       setNotifications((prevNotifications) =>
         prevNotifications.map((notif) =>
           notif.id === notificationId ? { ...notif, is_read: true } : notif

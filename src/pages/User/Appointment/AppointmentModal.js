@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './AppointmentModal.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api'
 
 const AppointmentModal = ({ doctorId, closeModal }) => {
   const auth = useAuth();
@@ -30,8 +30,8 @@ const AppointmentModal = ({ doctorId, closeModal }) => {
     setSlotsLoading(true);
     setServerError(null);
     try {
-      const response = await axios.get(
-        'http://localhost:8000/doctors/availability/slots/', {
+      const response = await api.get(
+        'doctors/availability/slots/', {
         params: {
           doctorId: doctorId,
           date: date
@@ -53,7 +53,7 @@ const AppointmentModal = ({ doctorId, closeModal }) => {
     setServerError(null);
 
     try {
-      await axios.post('http://localhost:8000/appointments/create/', {
+      await api.post('appointments/create/', {
         doctor: doctorId,
         patient: userId,
         date: values.date,
