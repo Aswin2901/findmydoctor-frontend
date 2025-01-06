@@ -3,6 +3,7 @@ import './AdminNav.css';
 import logo from '../../../Images/icon.svg';
 
 const AdminNav = () => {
+    // for git issue i am adding a commant 
 
     return (
         <nav className="navbar">
