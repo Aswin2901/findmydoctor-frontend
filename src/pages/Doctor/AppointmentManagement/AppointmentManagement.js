@@ -44,7 +44,7 @@ function AppointmentManagement() {
 
     const addLeave = async () => {
         try {
-            await api.post(`doctors/${API_BASE_URL}/leave/`, {
+            await api.post(`doctors/leave/`, {
                 userId,
                 date: selectedDate.toISOString().split('T')[0],
             });
