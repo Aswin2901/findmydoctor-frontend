@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import * as Yup from 'yup'; // Import Yup
 import { useFormik } from 'formik'; // Import Formik for validation
 import './DoctorSignup.css';
 import Navbar from '../../../components/Navbar/Navbar.js';
 import Footer from '../../../components/Footer/Footer.js';
 import { Link, useNavigate } from 'react-router-dom';
+import api from '../../../services/api.js';
 
 const DoctorSignup = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const DoctorSignup = () => {
     validationSchema: DoctorSignupSchema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post('http://localhost:8000/doctors/register/', values);
+        const response = await api.post('doctors/register/', values);
         console.log('Registration successful', response.data);
         setErrorMessage('');
         setSuccessMessage('Registration successful! Redirecting to login...');

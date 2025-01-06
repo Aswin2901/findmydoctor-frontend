@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./DoctorNav.css";
 import logo from "../../../Images/icon.svg";
-import axios from "axios";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +39,7 @@ const DoctorNav = () => {
             }
     
             const socket = new WebSocket(
-                `ws://127.0.0.1:8000/ws/notifications/${userId}/?token=${token}&role=${role}`
+                `ws://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
             );
     
             socket.onmessage = (event) => {

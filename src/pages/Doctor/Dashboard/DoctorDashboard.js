@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
 import Footer from '../../../components/Footer/Footer';
@@ -11,6 +10,7 @@ import Calendar from 'react-calendar';
 import ChatArea from '../../../components/Chat/ChatArea/ChatArea';
 import Notifications from '../../../components/Notification/Notifications';
 import DoctorProfile from '../DoctorProfile/DoctorProfile';
+import api from '../../../services/api';
 
 function DoctorDashboard() {
     const [isVerified, setIsVerified] = useState(null);
@@ -39,7 +39,7 @@ function DoctorDashboard() {
         async function checkVerification() {
             console.log('state docotor id :' , doctorId)
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/doctors/verification/${doctorId}/`);
+                const response = await api.get(`doctors/verification/${doctorId}/`);
                 setIsVerified(response.data.is_verified);
                 setFormSubmitted(response.data.form_submitted);
             } catch (error) {
@@ -50,7 +50,7 @@ function DoctorDashboard() {
 
         async function fetchAppointments() {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/appointments/history/${doctorId}/`);
+                const response = await api.get(`appointments/history/${doctorId}/`);
                 // Assuming the response contains an array of appointments
                 setAppointments(response.data.slice(0, 2)); // Get only the latest two appointments
             } catch (error) {

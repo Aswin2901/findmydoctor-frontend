@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import { useAuth } from '../../../contexts/AuthContext';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import api from '../../../services/api';
 
 // Fix default icon issue in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -129,8 +130,8 @@ const VerificationForm = () => {
                 formData.append(key, file);
             });
 
-            const response = await axios.post(
-                `http://localhost:8000/doctors/verify/${doctorId}/`,
+            const response = await api.post(
+                `doctors/verify/${doctorId}/`,
                 formData,
                 {
                     headers: {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './DoctorNotification.css';
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api';
 
 const DoctorNotifications = () => {
     const [notifications, setNotifications] = useState([]);
@@ -12,7 +12,7 @@ const DoctorNotifications = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/doctors/get-notifications/${doctorId}`);
+                const response = await api.get(`doctors/get-notifications/${doctorId}`);
                 setNotifications(response.data);
             } catch (error) {
                 console.error('Error fetching notifications:', error);
@@ -24,7 +24,7 @@ const DoctorNotifications = () => {
 
     const handleMarkAsRead = async (notificationId) => {
         try {
-            await axios.patch(`http://127.0.0.1:8000/doctors/mark-as-read/${notificationId}/`);
+            await api.patch(`doctors/mark-as-read/${notificationId}/`);
             setNotifications((prev) =>
                 prev.map((notif) =>
                     notif.id === notificationId ? { ...notif, doctor_is_read: true } : notif

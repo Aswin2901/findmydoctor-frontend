@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './AppointmentHistory.css';
+import api from '../../../services/api'
 
 function AppointmentHistory({ doctorId }) {
     const [appointments, setAppointments] = useState([]);
@@ -14,7 +14,7 @@ function AppointmentHistory({ doctorId }) {
         async function fetchAppointments() {
             setLoading(true);
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/appointments/history/${doctorId}/`);
+                const response = await api.get(`appointments/history/${doctorId}/`);
                 console.log('response :' , response.data)
                 setAppointments(response.data);
             } catch (error) {
@@ -43,7 +43,7 @@ function AppointmentHistory({ doctorId }) {
     const handleCancelAppointment = async (appointmentId) => {
         if (window.confirm('Are you sure you want to cancel this appointment?')) {
             try {
-                await axios.post(`http://127.0.0.1:8000/appointments/cancel/${appointmentId}/`);
+                await api.post(`appointments/cancel/${appointmentId}/`);
                 setAppointments((prevAppointments) =>
                     prevAppointments.filter((appointment) => appointment.id !== appointmentId)
                 );

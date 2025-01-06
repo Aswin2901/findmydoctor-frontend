@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './Dashboard.css';
 import Footer from '../../../components/Footer/Footer';
 import ProfileIcon from '../../../Images/profile-icon.png';
 import { useNavigate } from 'react-router-dom';
 import AdminNav from '../AdminNav/AdminNav';
+import api from '../../../services/api';
 
 const Dashboard = () => {
     // State variables
@@ -57,7 +57,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchRecentDoctors = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/doctors/recent/');
+                const response = await api.get('doctors/recent/');
                 setRecentDoctors(response.data);
             } catch (error) {
                 console.error('Error fetching recent doctors:', error);
@@ -67,7 +67,7 @@ const Dashboard = () => {
 
         const fetchDashboardCounts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/appointments/dashboard/counts/');
+                const response = await api.get('appointments/dashboard/counts/');
                 const { total_doctors, total_users, total_appointments, new_appointments } = response.data;
                 setDashboardCounts({
                     totalDoctors: total_doctors,
@@ -86,7 +86,7 @@ const Dashboard = () => {
     // Fetch doctors list
     const fetchDoctorsList = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/doctors/all/');
+            const response = await api.get('doctors/all/');
             setDoctorsList(response.data);
         } catch (error) {
             console.error('Error fetching doctors list:', error);
@@ -95,7 +95,7 @@ const Dashboard = () => {
 
     const fetchAppointments = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/appointments/all_appointments/');
+            const response = await api.get('appointments/all_appointments/');
             setAppointments(response.data);
         } catch (error) {
             console.error('Error fetching appointments:', error);
@@ -105,7 +105,7 @@ const Dashboard = () => {
     // Fetch users list
     const fetchUsersList = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/accounts/all/');
+            const response = await api.get('accounts/all/');
             setUsersList(response.data);
         } catch (error) {
             console.error('Error fetching users list:', error);
@@ -134,7 +134,7 @@ const Dashboard = () => {
     // Review doctor details
     const handleReviewDoctor = async (doctorId) => {
         try {
-            const response = await axios.get(`http://localhost:8000/doctors/review/${doctorId}/`);
+            const response = await api.get(`doctors/review/${doctorId}/`);
             setSelectedDoctor(response.data);
             console.log('respose data ' , response.data)
             setErrorMessage('');
@@ -152,7 +152,7 @@ const Dashboard = () => {
     // Verify doctor
     const handleVerifyDoctor = async () => {
         try {
-            await axios.post(`http://localhost:8000/doctors/makeverify/${selectedDoctor.doc_id}/`);
+            await api.post(`doctors/makeverify/${selectedDoctor.doc_id}/`);
             alert('Doctor verified successfully');
             setSelectedDoctor(null);
             fetchDoctorsList();
@@ -174,7 +174,7 @@ const Dashboard = () => {
 
         if (confirmAction) {
             try {
-                const response = await axios.patch(`http://localhost:8000/accounts/${userId}/block/`, {
+                const response = await api.patch(`accounts/${userId}/block/`, {
                     is_active: !currentStatus,
                 });
                 setUsersList(usersList.map(user =>

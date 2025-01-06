@@ -4,10 +4,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimeClock } from '@mui/x-date-pickers/TimeClock';
 import dayjs from 'dayjs';
-import axios from 'axios';
 import 'react-calendar/dist/Calendar.css';
 import './AppointmentManagement.css';
 import { useAuth } from '../../../contexts/AuthContext';
+import api from '../../../services/api';
 
 function AppointmentManagement() {
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -23,7 +23,6 @@ function AppointmentManagement() {
     const auth = useAuth();
     const [userId] = useState(auth.auth.user.id);
 
-    const API_BASE_URL = 'http://127.0.0.1:8000/doctors';
 
     const handleDateClick = (date) => {
         console.log(date)
@@ -45,7 +44,7 @@ function AppointmentManagement() {
 
     const addLeave = async () => {
         try {
-            await axios.post(`${API_BASE_URL}/leave/`, {
+            await api.post(`doctors/${API_BASE_URL}/leave/`, {
                 userId,
                 date: selectedDate.toISOString().split('T')[0],
             });
@@ -78,7 +77,7 @@ function AppointmentManagement() {
         };
         console.log('data....' , availabilityData)
         try {
-            await axios.post(`${API_BASE_URL}/availability/`, availabilityData);
+            await api.post(`doctors/availability/`, availabilityData);
             alert('Availability marked successfully!');
         } catch (error) {
             console.error('Error marking availability:', error.response?.data || error.message);

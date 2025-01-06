@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./DoctorProfile.css";
 import ProfileIcon from '../../../Images/profile-icon.png';
 import VerifiedBadge from '../../../Images/Verified.png'
 import { useAuth } from "../../../contexts/AuthContext";
+import api from "../../../services/api";
 
 function DoctorProfile() {
     const [doctor, setDoctor] = useState({});
@@ -15,7 +15,7 @@ function DoctorProfile() {
     useEffect(() => {
         async function fetchDoctorProfile() {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/doctors/profile/${doctorId}/`);
+                const response = await api.get(`doctors/profile/${doctorId}/`);
                 setDoctor(response.data);
                 
             } catch (error) {
@@ -52,8 +52,8 @@ function DoctorProfile() {
         }
     
         try {
-            const response = await axios.put(
-                `http://127.0.0.1:8000/doctors/profile/${doctorId}/`,
+            const response = await api.put(
+                `doctors/profile/${doctorId}/`,
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
