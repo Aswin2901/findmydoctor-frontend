@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 
 const AuthContext = createContext();
 
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   const refreshAccessToken = async () => {
     console.log('called')
     try {
-      const response = await axios.post('http://localhost:8000/token/refresh/', {
+      const response = await api.post('token/refresh/', {
         refresh: auth.refreshToken,
       });
       console.log(response.data)

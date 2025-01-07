@@ -19,7 +19,7 @@ function ChatArea({ userType }) {
     }
      
     const socket = new WebSocket(
-      `ws://127.0.0.1:8000/ws/chat/${activeChat.id}/?token=${token}&role=${activeChat.userType}`
+      `wss://findmydoctor.xyz/ws/chat/${activeChat.id}/?token=${token}&role=${activeChat.userType}`
     );
 
     socket.onopen = () => {

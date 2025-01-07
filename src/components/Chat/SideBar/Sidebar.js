@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useAuth } from '../../../contexts/AuthContext';
 import './Sidebar.css'
+import api from '../../../services/api';
 
 function Sidebar({ userType, onSelectChat }) {
   const [items, setItems] = useState([]);
@@ -14,13 +14,13 @@ function Sidebar({ userType, onSelectChat }) {
         let response;
         if (userType === 'doctor') {
           // Fetch patients for doctors
-          response = await axios.get(
-            `http://127.0.0.1:8000/appointments/doctors/${userId}/patients/`
+          response = await api.get(
+            `appointments/doctors/${userId}/patients/`
           );
         } else if (userType === 'patient') {
           // Fetch doctors for patients
-          response = await axios.get(
-            `http://127.0.0.1:8000/appointments/patients/${userId}/doctors/`
+          response = await api.get(
+            `appointments/patients/${userId}/doctors/`
           );
         }
         const modifiedData = response.data.map(item => ({

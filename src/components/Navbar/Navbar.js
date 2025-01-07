@@ -3,7 +3,6 @@ import "./Navbar.css";
 import logo from "../../Images/icon.svg";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import axios from "axios";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -40,7 +39,7 @@ const Navbar = () => {
             }
 
             const socket = new WebSocket(
-                `ws://127.0.0.1:8000/ws/notifications/${userId}/?token=${token}`
+                `wss://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}`
             );
 
             socket.onmessage = (event) => {

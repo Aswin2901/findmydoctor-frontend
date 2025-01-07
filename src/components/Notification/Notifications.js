@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Notifications.css"; // Import the CSS file for styles
+import api from '../../services/api'
 
 const Notifications = ({ userId, role }) => {
     const [notifications, setNotifications] = useState([]);
@@ -19,7 +19,7 @@ const Notifications = ({ userId, role }) => {
         }
 
         const socket = new WebSocket(
-            `ws://127.0.0.1:8000/ws/notifications/${userId}/?token=${token}&role=${role}`
+            `wss://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
         );
 
         socket.onopen = () => {
@@ -51,8 +51,8 @@ const Notifications = ({ userId, role }) => {
 
     const markAsRead = async (index, notificationId) => {
         try {
-            const response = await axios.patch(
-                `http://127.0.0.1:8000/appointments/notifications/${notificationId}/mark-as-read/`,
+            const response = await api.patch(
+                `appointments/notifications/${notificationId}/mark-as-read/`,
                 {},
                 {
                     headers: {
