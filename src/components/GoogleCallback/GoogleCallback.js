@@ -18,7 +18,7 @@ const GoogleCallback = () => {
 
       if (code) {
         try {
-          const response = await axios.get(`http://localhost:8000/accounts/oauth/callback/?code=${code}`);
+          const response = await axios.get(`https://findmydoctor.xyz/accounts/oauth/callback/?code=${code}`);
 
           console.log('Login success:', response.data); // This should log the success response
           login(response.data);
