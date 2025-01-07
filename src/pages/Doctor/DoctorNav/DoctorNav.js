@@ -38,9 +38,24 @@ const DoctorNav = () => {
                 return;
             }
     
-            const socket = new WebSocket(
-                `https://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
-            );
+            // const socket = new WebSocket(
+            //     `https://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
+            // );
+
+            // adding a command for pudh 
+
+            const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+        
+
+            if (!token) {
+                console.error("Access token not found. Please log in.");
+                return;
+            }
+
+            const socketUrl = `${protocol}://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`;
+            console.log("Connecting to WebSocket:", socketUrl);
+
+            const socket = new WebSocket(socketUrl);
     
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
