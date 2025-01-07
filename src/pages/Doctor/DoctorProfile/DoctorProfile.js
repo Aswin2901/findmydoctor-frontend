@@ -71,7 +71,7 @@ function DoctorProfile() {
             <div className="profile-picture-section">
 
                 <img 
-                    src={ doctor.profile_picture ? `http://localhost:8000${doctor.profile_picture}` : ProfileIcon } 
+                    src={ doctor.profile_picture ? `https://findmydoctor.xyz${doctor.profile_picture}` : ProfileIcon } 
                     alt="Profile" 
                     className="profile-picture" 
                 />
