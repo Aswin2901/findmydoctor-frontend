@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../contexts/AuthContext';
+import api from '../../services/api'
 
 const GoogleCallback = () => {
   const { login } = useAuth()
@@ -18,7 +18,7 @@ const GoogleCallback = () => {
 
       if (code) {
         try {
-          const response = await axios.get(`https://findmydoctor.xyz/accounts/oauth/callback/?code=${code}`);
+          const response = await api.get(`accounts/oauth/callback/?code=${code}`);
 
           console.log('Login success:', response.data); // This should log the success response
           login(response.data);
