@@ -39,7 +39,7 @@ const DoctorNav = () => {
             }
     
             const socket = new WebSocket(
-                `wss://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
+                `https://findmydoctor.xyz/ws/notifications/${userId}/?token=${token}&role=${role}`
             );
     
             socket.onmessage = (event) => {
