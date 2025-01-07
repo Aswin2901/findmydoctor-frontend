@@ -254,7 +254,7 @@ const Dashboard = () => {
                                     <div className="doctor-card" key={index}>
                                         <div className="doctor-info">
                                             <img
-                                                src={ `http://localhost:8000${doctor.profile_picture}` || ProfileIcon}
+                                                src={ `https://findmydoctor.xyz${doctor.profile_picture}` || ProfileIcon}
                                                 alt={`${doctor.full_name}'s Profile`}
                                                 className="doctor-profile-picture"
                                             />
@@ -368,7 +368,7 @@ const Dashboard = () => {
                                         <tr key={doctor.id}>
                                             <td>
                                                 <img
-                                                    src={doctor.profile_picture ?  `http://localhost:8000${doctor.profile_picture}` : ProfileIcon}
+                                                    src={doctor.profile_picture ?  `https://findmydoctor.xyz${doctor.profile_picture}` : ProfileIcon}
                                                     
                                                     className="table-profile-picture"
                                                 />
@@ -418,24 +418,24 @@ const Dashboard = () => {
         
                                         <div className="document-thumbnail">
                                             <a
-                                                href={`http://localhost:8000${selectedDoctor.id_proof}`}
+                                                href={`https://findmydoctor.xyz${selectedDoctor.id_proof}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={`http://localhost:8000${selectedDoctor.id_proof}`}
+                                                    src={`https://findmydoctor.xyz${selectedDoctor.id_proof}`}
                                                     alt="ID Proof"
                                                 />
                                             </a>
                                         </div>
                                         <div className="document-thumbnail">
                                             <a
-                                                href={`http://localhost:8000${selectedDoctor.medical_license}`}
+                                                href={`https://findmydoctor.xyz${selectedDoctor.medical_license}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={`http://localhost:8000${selectedDoctor.medical_license}`}
+                                                    src={`https://findmydoctor.xyz${selectedDoctor.medical_license}`}
                                                     alt="Medical License"
                                                 />
                                             </a>
@@ -443,12 +443,12 @@ const Dashboard = () => {
                                         </div>
                                         <div className="document-thumbnail">
                                             <a
-                                                href={`http://localhost:8000${selectedDoctor.degree_certificate}`}
+                                                href={`https://findmydoctor.xyz${selectedDoctor.degree_certificate}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={`http://localhost:8000${selectedDoctor.degree_certificate}`}
+                                                    src={`https://findmydoctor.xyz${selectedDoctor.degree_certificate}`}
                                                     alt="Degree Certificate"
                                                 />
                                             </a>
