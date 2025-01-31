@@ -195,49 +195,42 @@ function AppointmentManagement() {
                                         <h4>Start:</h4>
                                         <TimeClock
                                             value={breakTime.start}
-                                            onChange={(time) =>
-                                                updateBreakTime(index, 'start', time)
-                                            }
+                                            onChange={(time) => updateBreakTime(index, 'start', time)}
                                             views={['hours', 'minutes']}
                                         />
                                         <select
                                             value={breakTime.startAMPM}
-                                            onChange={(e) =>
-                                                updateBreakTime(index, 'startAMPM', e.target.value)
-                                            }
+                                            onChange={(e) => updateBreakTime(index, 'startAMPM', e.target.value)}
                                         >
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
                                         </select>
+                                        <p>Selected: {breakTime.start.format('hh:mm')} {breakTime.startAMPM}</p>
                                     </div>
                                     <div className="time-input">
                                         <h4>End:</h4>
                                         <TimeClock
                                             value={breakTime.end}
-                                            onChange={(time) =>
-                                                updateBreakTime(index, 'end', time)
-                                            }
+                                            onChange={(time) => updateBreakTime(index, 'end', time)}
                                             views={['hours', 'minutes']}
                                         />
                                         <select
                                             value={breakTime.endAMPM}
-                                            onChange={(e) =>
-                                                updateBreakTime(index, 'endAMPM', e.target.value)
-                                            }
+                                            onChange={(e) => updateBreakTime(index, 'endAMPM', e.target.value)}
                                         >
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
                                         </select>
+                                        <p>Selected: {breakTime.end.format('hh:mm')} {breakTime.endAMPM}</p>
                                     </div>
                                 </LocalizationProvider>
-                                <button
-                                    className="remove-break"
-                                    onClick={() => removeBreakTime(index)}
-                                >
+
+                                <button className="remove-break" onClick={() => removeBreakTime(index)}>
                                     Remove
                                 </button>
                             </div>
                         ))}
+
                         <button className="add-break" onClick={addBreakTime}>
                             Add Break
                         </button>
