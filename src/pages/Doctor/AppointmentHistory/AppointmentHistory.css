@@ -58,6 +58,26 @@ h2 {
     justify-content: center; /* Align the button to the right */
 }
 
+.head{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+}
+.clear-date-button{
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+
 /* Styling for the button */
 .cancel-button {
     padding: 8px 12px;

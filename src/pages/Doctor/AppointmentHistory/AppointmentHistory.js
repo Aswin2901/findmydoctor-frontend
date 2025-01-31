@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import './AppointmentHistory.css';
-import api from '../../../services/api'
+import api from '../../../services/api';
 
 function AppointmentHistory({ doctorId }) {
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [appointmentsPerPage] = useState(3); // Set the number of appointments per page
-    const [filterStatus, setFilterStatus] = useState('all'); // Default to show all
+    const [appointmentsPerPage] = useState(3);
+    const [filterStatus, setFilterStatus] = useState('all');
+    const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
         async function fetchAppointments() {
             setLoading(true);
             try {
                 const response = await api.get(`appointments/history/${doctorId}/`);
-                console.log('response :' , response.data)
                 setAppointments(response.data);
             } catch (error) {
                 console.error('Error fetching appointment history:', error);
@@ -27,17 +29,26 @@ function AppointmentHistory({ doctorId }) {
         fetchAppointments();
     }, [doctorId]);
 
-    // Filter appointments based on the selected status
-    const filteredAppointments = filterStatus === 'all'
-        ? appointments
-        : appointments.filter((appointment) => appointment.status === filterStatus);
+    const handleDateChange = (date) => {
+        const formattedDate = date.toLocaleDateString('en-CA'); // 'en-CA' ensures YYYY-MM-DD format
+        setSelectedDate(formattedDate);
+        setCurrentPage(1);
+    };
 
-    // Calculate the current appointments to display
+    const clearDateSelection = () => {
+        setSelectedDate(null);
+        setCurrentPage(1);
+    };
+
+    const filteredAppointments = appointments.filter((appointment) => {
+        const matchesStatus = filterStatus === 'all' || appointment.status === filterStatus;
+        const matchesDate = !selectedDate || appointment.date === selectedDate;
+        return matchesStatus && matchesDate;
+    });
+
     const indexOfLastAppointment = currentPage * appointmentsPerPage;
     const indexOfFirstAppointment = indexOfLastAppointment - appointmentsPerPage;
     const currentAppointments = filteredAppointments.slice(indexOfFirstAppointment, indexOfLastAppointment);
-
-    // Calculate the total number of pages
     const totalPages = Math.ceil(filteredAppointments.length / appointmentsPerPage);
 
     const handleCancelAppointment = async (appointmentId) => {
@@ -69,82 +80,87 @@ function AppointmentHistory({ doctorId }) {
         <div className="appointment-history">
             <h2>Appointment History</h2>
 
-            {/* Display message */}
             {message && <div className="message">{message}</div>}
 
-            {/* Filter by status */}
-            <div className="filter-container">
-                <label htmlFor="statusFilter">Filter by Status:</label>
-                <select
-                    id="statusFilter"
-                    value={filterStatus}
-                    onChange={(e) => {
-                        setFilterStatus(e.target.value);
-                        setCurrentPage(1); // Reset to the first page when filtering
-                    }}
-                >
-                    <option value="all">All</option>
-                    <option value="Confirmed">Scheduled</option>
-                    <option value="completed">Completed</option>
-                    <option value="canceled">Canceled</option>
-                </select>
+            <div className='head'>
+                <div className="calendar-container">
+                    <Calendar onChange={handleDateChange} value={selectedDate ? new Date(selectedDate) : null} />
+                    {selectedDate && (
+                        <button className="clear-date-button" onClick={clearDateSelection}>
+                            Clear Date
+                        </button>
+                    )}
+                </div>
+
+                <div className="filter-container">
+                    <label htmlFor="statusFilter">Filter by Status:</label>
+                    <select
+                        id="statusFilter"
+                        value={filterStatus}
+                        onChange={(e) => {
+                            setFilterStatus(e.target.value);
+                            setCurrentPage(1);
+                        }}
+                    >
+                        <option value="all">All</option>
+                        <option value="Confirmed">Scheduled</option>
+                        <option value="completed">Completed</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                </div>
             </div>
 
             {currentAppointments.length === 0 ? (
                 <p>No appointments found.</p>
             ) : (
-                <ul className="appointment-list">
-                    {currentAppointments.map((appointment) => (
-                        <li key={appointment.id} className="appointment-item">
-                            <div className="appointment-row">
-                                <p><strong>Patient:</strong> {appointment.patient_name}</p>
-                                <p><strong>Date:</strong> {appointment.date}</p>
-                            </div>
-                            <div className="appointment-row">
-                                <p><strong>Patient Number:</strong> {appointment.patient_phone}</p>
-                                <p><strong>Patient Gender:</strong> {appointment.patient_gender}</p>
-                            </div>
-                            
-                            <div className="appointment-row">
-                                <p><strong>Time:</strong> {appointment.time}</p>
-                                <p style={appointment.status === 'canceled' ? { color: "red" } : { color: 'green' }}>
-                                    <strong>Status:</strong> {appointment.status}
-                                </p>
-                            </div>
-                            <div className="appointment-row">
-                                <p><strong>Reason For visit:</strong> {appointment.reason_for_visit}</p>
-                            </div>
-                            <div className="button-row">
-                                {appointment.status === 'Confirmed' && (
-                                    <button
-                                        className="cancel-button"
-                                        onClick={() => handleCancelAppointment(appointment.id)}
-                                    >
-                                        Cancel Appointment
-                                    </button>
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <table className="appointment-table">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Reason</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {currentAppointments.map((appointment) => (
+                            <tr key={appointment.id}>
+                                <td>{appointment.patient_name}</td>
+                                <td>{appointment.patient_phone}</td>
+                                <td>{appointment.patient_gender}</td>
+                                <td>{appointment.date}</td>
+                                <td>{appointment.time}</td>
+                                <td style={appointment.status === 'canceled' ? { color: "red" } : { color: 'green' }}>
+                                    {appointment.status}
+                                </td>
+                                <td>{appointment.reason_for_visit}</td>
+                                <td>
+                                    {appointment.status === 'Confirmed' && (
+                                        <button
+                                            className="cancel-button"
+                                            onClick={() => handleCancelAppointment(appointment.id)}
+                                        >
+                                            Cancel
+                                        </button>
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             )}
 
-            {/* Pagination */}
             {totalPages > 1 && (
                 <div className="pagination-container">
-                    <button
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
+                    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                         Previous
                     </button>
-                    <span>
-                        Page {currentPage} of {totalPages}
-                    </span>
-                    <button
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
+                    <span>Page {currentPage} of {totalPages}</span>
+                    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                         Next
                     </button>
                 </div>
